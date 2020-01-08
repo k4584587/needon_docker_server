@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  mariadb:
+    container_name: mariadb
+    build: .
+    environment:
+        - MYSQL_ROOT_PASSWORD = 1234 #수정
+        - TZ=Asia/Seoul
+    restart: always
+    ports:
+        - "3306:3306"
+    volumes:
+      - "../../config/mariadb/conf.d/config.cnf:/etc/mysql/conf.d/config.cnf"

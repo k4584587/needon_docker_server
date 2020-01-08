@@ -1,0 +1,4 @@
+[mysqld]
+
+# 대 소문자 구분 안하기
+lower_case_table_names = 1
