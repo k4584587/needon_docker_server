@@ -12,3 +12,15 @@ services:
         - "3306:3306"
     volumes:
       - "../../config/mariadb/conf.d/config.cnf:/etc/mysql/conf.d/config.cnf"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: ebspace/armhf-phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    links:
+      - "mariadb:db"
+    environment:
+      - PMA_HOST = "needon.kr" #수정
