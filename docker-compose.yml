@@ -10,9 +10,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Seoul
+      - SUBDOMAINS=wildcard
       - URL=needon.kr #수정
-      - SUBDOMAINS=www, #수정
-      - VALIDATION=http
+      - EXTRA_DOMAINS=hirami.me,www.hirami.me #수정
+      - VALIDATION=dns
       - DNSPLUGIN=cloudflare #수정
       - EMAIL=admin@needon.kr #수정
       - DHLEVEL=2048
@@ -28,6 +29,7 @@ services:
   php:
     container_name: php
     build: ./config/php
+    restart: always
     volumes:
       - <"웹파일 저장위치">:/var/www/html #수정
       - "./config/php/apache-remoteip.conf:/etc/apache2/mods-enabled/remoteip.conf:ro"
